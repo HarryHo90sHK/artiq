@@ -112,6 +112,7 @@ class SSHClient(Client):
             logger.debug("Uploading {}".format(filename))
             # Avoid a race condition by writing into a temporary file
             # and atomically replacing
+            logger.debug("remote_filename = {}".format(remote_filename))
             with sftp.open(remote_filename + ".~", "wb") as remote:
                 remote.write(rewritten)
             try:
